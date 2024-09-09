@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+    
+        
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            position: sticky;
+            background-color: #5d4037;
+            padding: 10px 0 0.1px 0;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: #7b5e57;
+        }
+
+        main {
+            width: 85%;
+            margin: 20px auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #5d4037;
+        }
+
+        p, ul {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .section-block {
+            background-color: #fff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li strong {
+            color: #5d4037;
+        }
+
+        a {
+            color: #5d4037;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            main {
+                width: 95%;
+            }
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .content-container {
+            margin: 50px auto;
+            padding: 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .content-container {
+            transition: all 0.3s ease;
+        }
+
+        .content-container:hover {
+            transform: scale(1.01);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+    
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Step_1.html">Step 1</a></li>
+                <li><a href="Step_2.html">Step 2</a></li>
+                <li><a href="Step_3.html">Step 3</a></li>
+                <li><a href="Report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-container">
+        <h1>Report</h1>
+
+        <h2>Methodology</h2>
+        <ol>
+            <li> Developing SPARQL Queries: We aim to construct precise SPARQL queries to retrieve detailed information about De Stefani Vincenzo's artworks. This involves designing queries that effectively extract relevant data and enhance our understanding of his impact on Italian art.</li>
+            <li> Comparing Large Language Models (LLMs): We will evaluate and compare two different LLMs to assess their effectiveness in generating insightful and accurate descriptions related to Vincenzo's work. This comparison will help us understand the strengths and limitations of each model.</li>
+            <li> Enhancing the ArCo Knowledge Graph: Our objective is to enrich the ArCo knowledge graph by adding new data connections that reflect Vincenzo’s contributions more comprehensively. This will involve integrating new triples and ensuring the graph accurately represents his influence on Italian art.</li>
+            <li> Creating a GitHub Website: We will develop and host a website on GitHub to present our findings and methodologies. This site will serve as a platform to showcase our research, display the enhanced knowledge graph, and provide access to the SPARQL queries and LLM comparisons.</li>
+        </ol>
+
+        <h2>Problems and Solutions</h2>
+        <ul>
+            <li><strong> A. Crafting Accurate SPARQL Queries:</strong> We encountered difficulties in developing precise queries to retrieve relevant data and avoid irrelevant results. To overcome this, we conducted thorough research and utilized best practices for SPARQL syntax to ensure accuracy.</li>
+            <li><strong> B. Enhancing the ArCo Ontology:</strong> Adding new data connections to better represent De Stefani Vincenzo’s influence and address gaps in the ontology proved challenging. We created and integrated new triples into the ontology, enriching the data and improving its comprehensiveness.</li>
+            <li><strong> C. Using Large Language Models (LLMs):</strong> Managing inconsistent outputs from LLMs and ensuring they provided accurate insights about Vincenzo’s artworks was a challenge. We employed prompting techniques and a verification process to refine and validate LLM-generated information.</li>
+            <li><strong> D. Building a User-Friendly Website:</strong> Designing a visually appealing and functional website to present project findings effectively involves technical challenges. We utilized modern web development frameworks and responsive design principles, incorporating user feedback through iterative testing.</li>
+            <li><strong> E. Maintaining Data Accuracy:</strong> Ensuring the accuracy and consistency of newly added data within the ArCo knowledge graph was crucial. We implemented rigorous data validation procedures and cross-checked information for reliability.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>In this project, we have undertaken a comprehensive exploration of De Stefani Vincenzo’s contributions to Italian art. By developing precise SPARQL queries, comparing the effectiveness of different Large Language Models (LLMs), and enriching the ArCo knowledge graph, we aim to enhance the understanding of Vincenzo's artistic impact. Through these initiatives, we seek to offer deeper insights into Vincenzo's legacy and contribute to the broader appreciation of Italian art heritage.</p>
+    </div>
+    </main>
+</body>
+</html>

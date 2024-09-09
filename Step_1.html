@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 1 - Data Exploration and SPARQL Query Formulation</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #5d4037;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+header nav ul li a.active {
+    background-color: #7b5e57;
+}
+
+header nav ul li a:hover {
+    background-color: #8d6e63;
+}
+
+main {
+    width: 85%;
+    margin: 20px auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #5d4037;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.query-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.query-box .query {
+    width: 65%;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.query-box .query pre {
+    font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+}
+
+.query-box .query-info {
+    width: 30%;
+    padding-left: 20px;
+    font-size: 1.1em;
+}
+
+.query-info a {
+    color: #5d4037;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.query-info a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .query-box {
+        flex-direction: column;
+    }
+
+    .query-box .query, 
+    .query-box .query-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+/* Our Project Section */
+        #project {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #project p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Step_1.html">Step 1</a></li>
+                <li><a href="Step_2.html">Step 2</a></li>
+                <li><a href="Step_3.html">Step 3</a></li>
+                <li><a href="Report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Step 1</h1>
+        <section class="exploration">
+            <section id="project">
+                <h2>ARCO Exploration and SPARQL Query Formulation. Topic Discovery Phase. </h2>
+                <p>Our exploration started with a broad search in the ArCo knowledge graph using SPARQL queries to find artists born in Verona. Since we had visited the city, we were curious about who contributed to Italian painting in the 19th century</p>
+            </section>
+            
+            <div class="query-box">
+                <div class="query">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX cpv: &lt;https://w3id.org/italia/onto/CPV/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+SELECT DISTINCT ?artist ?name 
+WHERE { 
+    ?artist rdf:type cpv:Person ; 
+            rdf:type l0:Agent ; 
+            rdfs:label ?name ; 
+            a-cd:hasProfession ?profession ; 
+            cpv:hasBirthPlace ?birthPlace. 
+   ?profession l0:name "pittore". 
+   ?birthPlace l0:name "Verona". 
+} 
+ORDER BY ASC(?name) 
+                    </pre>
+                </div>
+                <div class="query-info">
+                    <p><strong>Query 1:</strong> First, we created to identify artists born in Verona. 
+</p>
+                    <p><strong>Purpose of this query:</strong> The query retrieves and lists unique artists who are painters and were born in Verona, displaying their names in alphabetical order. 
+</p>
+                    <p><strong>Result:</strong> <a href="https://l1nq.com/Result1 "> https://l1nq.com/Result1 </a></p>
+                </div>
+            </div>
+
+            <section id="project">
+                <p>After identifying all the artists born in Verona, we then focused on those from the 19th century. To do this, we created the following query: </p>
+            </section>
+            <!-- Second Query Box -->
+            <div class="query-box">
+                <div class="query">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX cpv: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX a-cd: &lt;https://w3id.org/italia/onto/CPV/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+
+SELECT ?artist, ?name, ?birthDate 
+WHERE { 
+    ?artist rdf:type cpv:Person ; 
+            rdfs:label ?name ; 
+            a-cd:hasProfession ?profession ; 
+            cpv:hasBirthPlace ?birthPlace ; 
+            cpv:dateOfBirth ?birthDate. 
+   ?profession l0:name "pittore". 
+   ?birthPlace l0:name "Verona". 
+    FILTER REGEX( ?birthDate, "(^18)"). 
+} 
+ORDER BY ASC(?birthDate) 
+LIMIT 150 
+
+                    </pre>
+                </div>
+                <div class="query-info">
+                    <p><strong>Query 2:</strong>  Which artists are with a birth date in the 19th century
+</p>
+                    <p><strong>Purpose of this query:</strong>This query aims to filter the data to focus specifically on artists born in Verona during the 19th century. 
+</p>
+                    <p><strong>Result:</strong> <a href="https://encr.pw/Result2 "> https://encr.pw/Result2  </a></p>
+                </div>
+            </div>
+
+  <section id="project">
+                <p>We had many artists to choose from, but we were particularly interested in De Stefani Vincenzo because of his impressive name. To learn more about him, we created a SPARQL query using RDF statements in HTML+Microdata notation. </p>
+            </section>
+            <!-- Second Query Box -->
+            <div class="query-box">
+                <div class="query">
+                    <pre>
+PREFIX rdf: &lt;https://w3id.org/arco/resource/Agent/&gt;
+DESCRIBE cis:c641c649d83b4a7307b954a71a5eb7b7 
+
+                    </pre>
+                </div>
+                <div class="query-info">
+
+                    <p><strong>Purpose of this query:</strong>is to retrieve a detailed description of the resource <strong>cis:c641c649d83b4a7<br>307b954a71a5eb7b7</strong>, which represented as an artist. 
+</p>                    <p>The <strong>DESCRIBE</strong> keyword returns all triples (statements) related to this resource, providing its full set of properties and any relationships. This allows to understand the full context and details associated with 
+
+                    <p><strong>Result:</strong> <a href="https://encr.pw/Result3 "> https://encr.pw/Result3   </a></p>
+                </div>
+            </div>
+
+
+
+<section id="project">
+                <p>Next, we wanted to list all of his paintings in alphabetical order, so we created this query: </p>
+            </section>
+            <!-- Second Query Box -->
+            <div class="query-box">
+                <div class="query">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX cpv: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/resource/Agent/&gt;
+SELECT * 
+WHERE { 
+	?culturalProperty a arco:HistoricOrArtisticProperty ; 
+         	a-cd:hasAuthor agent:c641c649d83b4a7307b954a71a5eb7b7 
+	OPTIONAL { ?culturalProperty dc:title ?title } 
+} 
+ORDER BY ASC(?title)
+
+LIMIT 150 
+
+                    </pre>
+                </div>
+                <div class="query-info">
+                    <p><strong>Query 4:</strong>   What are the cultural properties authored by De Stefani Vincenzo?
+                    <p><strong>Purpose of this query:</strong>The purpose of this query is to retrieve all cultural properties of De Stefani Vincenzo. </p>
+                    <p><strong>Result:</strong> <a href="http://surl.li/uomvbi  "> http://surl.li/uomvbi   </a></p>
+                </div>
+            </div>
+
+
+
+<section id="project">
+                <p>After listing all the paintings, we looked for those missing historical details, with a focus on Verona. To find these, we used the following SPARQL query:  </p>
+            </section>
+            <!-- Second Query Box -->
+            <div class="query-box">
+                <div class="query">
+                    <pre>
+PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX cpv: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX a-cd: &lt;https://w3id.org/arco/resource/Agent/&gt;
+PREFIX a-cd: &lt;http://purl.org/dc/terms/&gt;
+
+SELECT ?culturalProperty (SAMPLE(?title)) (SAMPLE(?placeName)) (SAMPLE(?historicalInformation)) 
+WHERE { 
+	?culturalProperty rdf:type arco:HistoricOrArtisticProperty ; 
+      	a-cd:hasAuthor agent:c641c649d83b4a7307b954a71a5eb7b7 ; 
+      	dc:title ?title ; 
+      	dcterms:spatial ?place . 
+	?place rdfs:label ?placeName . 
+	OPTIONAL { ?culturalProperty a-cd:historicalInformation ?historicalInformation } 
+	FILTER CONTAINS (?placeName, "Verona"). 
+} 
+GROUP BY ?culturalProperty   
+
+
+                    </pre>
+                </div>
+                <div class="query-info">
+                    <p><strong>Query 5:</strong>Which cultural properties created by De Stefani Vincenzo are associated with the place Verona?
+
+                    <p><strong>Purpose of this query:</strong> is to retrieve information about the cultural properties authored by  De Stefani Vincenzo with a particular focus on those associated with the location "Verona." </p>
+                    <p><strong>Result:</strong> <a href="https://acesse.dev/Result5   "> https://acesse.dev/Result5    </a></p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

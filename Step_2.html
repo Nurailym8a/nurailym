@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 1 - Data Exploration and SPARQL Query Formulation</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #5d4037;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+header nav ul li a.active {
+    background-color: #7b5e57;
+}
+
+header nav ul li a:hover {
+    background-color: #8d6e63;
+}
+
+main {
+    width: 85%;
+    margin: 20px auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #5d4037;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.query-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.query-box .query {
+    width: 65%;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.query-box .query pre {
+    font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+}
+
+.query-box .query-info {
+    width: 30%;
+    padding-left: 20px;
+    font-size: 1.1em;
+}
+
+.query-info a {
+    color: #5d4037;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.query-info a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .query-box {
+        flex-direction: column;
+    }
+
+    .query-box .query, 
+    .query-box .query-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+#vision {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#vision img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+#vision .content {
+    max-width: 600px;
+}
+
+#vision .content h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+#vision .content p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+
+.table-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f0f0f0;
+    width: 30%;
+    color: #5A5A5A;
+}
+
+td {
+    background-color: #fafafa;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+td ul li {
+    margin-bottom: 10px;
+}
+
+.table-container {
+    transition: all 0.3s ease;
+}
+
+.table-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+
+.content-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.content-container {
+    transition: all 0.3s ease;
+}
+
+.content-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Step_1.html">Step 1</a></li>
+                <li><a href="Step_2.html">Step 2</a></li>
+                <li><a href="Step_3.html">Step 3</a></li>
+                <li><a href="Report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Integration of Large Language Models (LLM) Enriching Arco Ontology</h1>
+        <section id="vision">
+            <img src="citta.png" alt="citta" />
+            <div class="content">
+            
+            <p>After collecting all the necessary information, the next phase involves enhancing the data and leveraging Large Language Models (LLMs) for deeper analysis. To carry out this comparison, I plan to use two models: <strong>ChatGPT</strong> and <strong>Gemini</strong>.</p>
+        
+            <strong>We used:</strong>
+            
+            <ul>
+
+                <li><strong>Zero-shot prompting:</strong> Involves asking the model to generate responses or solve tasks without any prior examples or context. It tests the model's ability to handle new or unfamiliar queries based solely on its training.</li>
+                
+                <li><strong>Few-shot prompting:</strong> Provides the model with a few example inputs and outputs to illustrate the desired response style or format. This technique helps the model understand the task better and generate more relevant and accurate responses.</li>
+                
+                <li><strong>Chain-of-thought prompting:</strong> Encourages the model to articulate its reasoning process in a step-by-step manner. This method helps the model break down complex problems, making its thinking process more transparent and ensuring thorough, well-reasoned answers.</li>
+                <li><strong>One-Shot Prompting:</strong>  is an NLP technique where a model is given a single example to guide its response on a similar task, allowing it to generalize from that one instance without needing further examples.</li>
+
+            </ul>
+
+
+            </div>
+        </section>
+
+        <div class="table-container">
+            <h1>Zero Shot Prompting Comparison</h1>
+            <table>
+                <tr>
+                    <th>Cultural Property</th>
+                    <td>Venezia Incipriata, Veduta di Città</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>De Stefano Vincenzo</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>What does this cultural property represent?</td>
+                </tr>
+                <tr>
+                    <th>ChatGPT Response</th>
+                    <td>
+                        "Venezia Incipriata, Veduta di Città" by De Stefani Vincenzo likely represents a cityscape of Venice, capturing its distinctive atmosphere. The term "incipriata" might refer to a hazy or powdered appearance, suggesting a soft, ethereal depiction of the city. "Veduta di Città" translates to "view of the city," indicating that the painting is a landscape portrayal of Venice, focusing on the architectural beauty and daily life of the city. The painting may reflect Venice's unique interplay of light, water, and structure, emphasizing its timeless charm. De Stefani Vincenzo’s work often highlighted the serene, atmospheric qualities of Italian landscapes and cityscapes, so this cultural property would likely serve as a tribute to Venice's iconic urban and natural beauty.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gemini Response</th>
+                    <td>
+                        What could it represent:
+                        <ul>
+                            <li>A snapshot of Venice: Like a photograph, the engraving captures a specific moment in time of the city, with its buildings, its squares, and its unique atmosphere.</li>
+                            <li>The idealization of beauty: Venice has always been considered an extremely beautiful city, and this work highlights its most fascinating characteristics, creating an ideal image.</li>
+                            <li>A collective identity: The city is a place of belonging for Venetians, and views like this strengthen the sense of community and identity.</li>
+                            <li>A historical document: Engravings are valuable historical sources. By studying this work, we can reconstruct the appearance of the city in a specific period and understand its urban development.</li>
+                            <li>An artistic technique: The term "incipriata" could refer to a particular engraving technique used by De Stefani to create light and shadow effects, giving the work a characteristic atmosphere.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+
+<div class="table-container">
+            <h1>Few-Shot Prompting </h1>
+            <table>
+                <tr>
+                    <th>Cultural Property</th>
+                    <td>Venezia Incipriata, Veduta di Città</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>De Stefano Vincenzo</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>Сan you extract cultural entities from this description? List the results.</td>
+                </tr>
+                <tr>
+                    <th>Example</th>
+                    <td> 'The Persistence of Memory' by Salvador Dalí 
+'The Scream' by Edvard Munch 
+'Girl with a Pearl Earring' by Johannes Vermeer" </td>
+                </tr>
+                <tr>
+                    <th>ChatGPT Response</th>
+                    <td>
+                        "Venezia Incipriata, Veduta di Città" – The painting by De Stefani Vincenzo. De Stefani Vincenzo – The artist of the painting. Venice (Venezia) – The city depicted in the painting. 
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gemini Response</th>
+                    <td>
+                        What could it represent:
+                        <ul>
+                            <li><strong>Venezia Incipriata, Veduta di Città:</strong> This is the specific artwork being discussed.  </li>
+                            <li><strong>Vincenzo De Stefani:</strong> The artist who created the artwork.   </li>
+                            <li><strong>Venice:</strong> The city depicted in the artwork  </li>
+                            <li><strong>Engraving:</strong> The artistic technique used to create the artwork.   </li>
+                            <li><strong>Italian Renaissance Art:</strong>  The broader cultural period and artistic style to which the artwork might belong.   </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+
+    <div class="table-container">
+        <h1>Chain of Thought Prompting</h1>
+        <table>
+            <tr>
+                <th>Prompt</th>
+                <td>Chain of Thought Prompting</td>
+            </tr>
+            <tr>
+                <th>ChatGPT Response</th>
+                <td>
+                    <pre>
+@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+&lt;https://example.org/artwork/venezia-incipriata-veduta-di-citta&gt; a arco:CulturalProperty ;
+    dc:title "Venezia Incipriata, Veduta di Città" ;
+    arco:hasAuthor &lt;https://example.org/person/de-stefani-vincenzo&gt; ;
+    arco:depicts &lt;https://example.org/place/venice&gt; ;
+    dcterms:creator &lt;https://example.org/person/de-stefani-vincenzo&gt; ;
+    dcterms:subject &lt;https://example.org/place/venice&gt; ;
+    foaf:depiction &lt;https://example.org/artwork/venezia-incipriata-veduta-di-citta/image&gt; .
+
+&lt;https://example.org/person/de-stefani-vincenzo&gt; a foaf:Person ;
+    foaf:name "De Stefani Vincenzo" .
+
+&lt;https://example.org/place/venice&gt; a arco:Place ;
+    dc:title "Venice" .
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <th>Gemini Response</th>
+                <td>
+                    <pre>
+@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+
+&lt;https://example.org/artwork/venezia-incipriata&gt; a arco:CulturalProperty ;
+    dc:title "Venezia Incipriata, Veduta di Città" ;
+    arco:hasAuthor &lt;https://example.org/person/vincenzo-de-stefani&gt; ;
+    arco:depicts &lt;https://example.org/place/venice&gt; ;
+    dcterms:creator &lt;https://example.org/person/vincenzo-de-stefani&gt; ;
+    dcterms:subject &lt;https://example.org/place/venice&gt; ;
+    foaf:depiction &lt;https://example.org/artwork/venezia-incipriata/image&gt; .
+
+&lt;https://example.org/person/vincenzo-de-stefani&gt; a foaf:Person ;
+    foaf:name "Vincenzo De Stefani" .
+
+&lt;https://example.org/place/venice&gt; a arco:Place ;
+    dc:title "Venice" .
+                    </pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-container">
+            <h1>Analysis</h1>
+            <p>
+                The assessment demonstrated that one model provided exceptionally clear and detailed RDF descriptions of artwork, making the information highly understandable. 
+                It significantly outperformed Gemini in generating accurate, comprehensive, and clear SPARQL queries. However, Gemini faced several limitations, including challenges 
+                in producing consistent and complete RDF descriptions. Additionally, it struggled with query accuracy and lacked clarity in its responses, which impacted the overall 
+                effectiveness of the data retrieval and interpretation processes.
+            </p>
+            
+            <h2>Verification of the extracted information</h2>
+            <pre>
+    PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+    PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+    PREFIX dct: &lt;http://purl.org/dc/terms/&gt;
+    PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+    PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+    SELECT DISTINCT ?CulturalProperty ?title ?creator ?spatial
+    WHERE {
+    {
+        ?CulturalProperty a arco:HistoricOrArtisticProperty;
+                        dc:title ?title .
+        FILTER(REGEX(?title, "Venezia Incipriata, Veduta di Città|Vespro", "i")) .
+    }
+    UNION
+    {
+        ?CulturalProperty a arco:CulturalProperty ;
+                        dc:creator ?creator .
+        ?creator foaf:name "De Stefani Vincenzo" .
+    }
+    UNION
+    {
+        ?CulturalProperty a arco:CulturalProperty ;
+                        dct:spatial ?spatial .
+        FILTER(REGEX(?spatial, "Verona", "i")) .
+    }
+    UNION
+    {
+        ?CulturalProperty a arco:CulturalProperty ;
+                        dct:description ?description .
+        FILTER(REGEX(?description, "Italian landscape|scenes of daily life", "i")) .
+    }
+    }
+            </pre>
+
+            <h3>Question</h3>
+            <p>
+                We wanted to check for any cultural property entries in the ArCo knowledge graph related to De Stefani Vincenzo's artworks, 
+                specifically "Venezia Incipriata, Veduta di Città" and "Vespro."
+            </p>
+
+            <h3>Purpose</h3>
+            <p>
+                This query aims to find cultural properties in the ArCo knowledge graph that match criteria related to De Stefani Vincenzo’s artworks, including titles, creator names, 
+                spatial details about Verona, or descriptions related to Italian landscapes or daily life scenes. The UNION clause combines these criteria, and the FILTER clause ensures 
+                case-insensitive matching.
+            </p>
+
+            <h3>Result</h3>
+            <p><a href="https://shorturl.at/uMukK" target="_blank">https://shorturl.at/uMukK</a></p>
+        </div>
+
+
+
+<div class="content-container">
+        <h1>CREATING New Triplets</h1>
+        
+        <pre>
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?sub ?slabel
+WHERE 
+{  
+	?cp a-cd:hasSubject ?sub . 
+	?sub a a-cd:Subject ; 
+     	rdfs:label ?slabel . 
+	FILTER(REGEX(?slabel, "bridge|canal|church", "i")) 
+}
+        </pre>
+
+        <p>
+            Considering the current absence of information on elements such as the Grand Canal on the painting within ArCo, 
+            we have the opportunity to enrich the ontology by introducing new triples to include these details.
+        </p>
+
+        <h3>Question</h3>
+        <p>
+            Are there subjects in ArCo that we can connect to the architectural features depicted in 
+            "Venezia Incipriata, Veduta di Città"?
+        </p>
+
+        <h3>New Triplet</h3>
+        <p>
+            <a href="https://dati.beniculturali.it/lodview-arco/resource/Veneto/Subject/3271f017cd678827ffdc24962fe831f6.html" target="_blank">
+                https://w3id.org/arco/resource/HistoricOrArtisticProperty/0500404883 a-cd:hasSubject 
+            </a>
+        </p>
+
+        <h3>Purpose</h3>
+        <p>
+            This query finds all subjects in the ArCo knowledge graph whose labels contain the word "canal" that may connect 
+            to "Venezia Incipriata, Veduta di Città."
+        </p>
+    </div>
+
+
+
+    </main>
+</body>
+</html>

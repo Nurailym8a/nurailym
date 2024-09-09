@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morandi's Vision of Bologna</title>
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #5d4037;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            background-color: #7b5e57;
+        }
+
+        main {
+            width: 85%;
+            margin: 20px auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #5d4037;
+        }
+
+        #vision {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #vision img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        #vision .content {
+            max-width: 600px;
+        }
+
+        #vision .content h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        #vision .content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            display: flex;
+            justify-content: space-around; /* Equal spacing between gallery items */
+            align-items: center;
+            margin-bottom: 60px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow around the section */
+        }
+
+        .gallery-item {
+            display: flex;
+            flex-direction: column; /* Stack the image and title vertically */
+            align-items: center;
+            text-align: center; /* Center the text */
+        }
+
+        .gallery-item img {
+            width: 280px;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow on the images */
+            margin-bottom: 15px; /* Spacing between the image and the title */
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05); /* Slightly zoom the image on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        .gallery-title h2 {
+            font-size: 1.2em;
+            color: #5b4636; 
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #gallery {
+                flex-direction: column; 
+                gap: 30px;
+            }
+
+            .gallery-item img {
+                width: 90%; 
+            }
+        }
+
+        /* Our Team Section */
+        #team {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #team .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        #team .team-member {
+            margin: 20px 0;
+        }
+
+        #team .team-member img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #team .team-member img:hover {
+            transform: translateY(-10px);
+        }
+
+        #team .team-member p {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* Our Project Section */
+        #project {
+            text-align: center;
+            margin-bottom: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #project p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Step_1.html">Step 1</a></li>
+                <li><a href="Step_2.html">Step 2</a></li>
+                <li><a href="Step_3.html">Step 3</a></li>
+                <li><a href="Report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>De Stefani Vincenzo’s Contribution to Italian Art Heritage</h1>
+        <section id="vision">
+            <img src="stefano.png" alt="Giorgio Morandi" />
+            <div class="content">
+                <h2>De Stefani Vincenzo</h2>
+                <p><strong>Vincenzo De Stefani, </strong> born on March 6, 1859, in Verona, Italy, was a prominent painter known for his eclectic style and significant contributions to Italian art. He studied under Napoleone Nani at the Accademia Cignaroli in Verona and Cesare Maccari in Rome. After completing his studies, he lived in Capri before settling in Verona and later moving to Venice, where he taught ornamental painting at the Accademia. </p>
+                <p>De Stefani began his exhibition career in 1883, showcasing his works in Rome and Milan. His notable successes included exhibitions in Torino, Florence, and Verona, with significant acclaim at the 1887 National Exhibition in Venice. His versatile style ranged from portraits and landscapes to dramatic and genre paintings, reflecting the influences of his time, including that of F. Carcano and Lombard painting. As an advocate of naturalism, De Stefani played a key role in the art renewal movement in the Veneto region.</p>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="gallery-item">
+                <img src="citta.png" alt="Art piece 1">
+                <div class="gallery-title">
+                    <h2>Venezia Incipriata, Veduta di Città</h2>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="vespro.png" alt="Art piece 3">
+                <div class="gallery-title">
+                    <h2>Vespro, Scena di Vita Quotidiana</h2>
+                </div>
+            </div>
+        </section>
+
+ 
+
+        <!-- Our Team Section -->
+        <section id="team">
+            <h2>Our Team</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="noura.jpg" alt="Nurailym Adilkhan">
+                    <p>Nurailym Adilkhan</p>
+                </div>
+                <div class="team-member">
+                    <img src="nellya.jpg" alt="Nellya Khamudinova">
+                    <p>Nellya Khamudinova</p>
+                </div>
+               
+            </div>
+        </section>
+
+        <!-- Our Project Section -->
+        <section id="project">
+            <h2>Our Project</h2>
+            <p>We are thrilled to introduce our project, "De Stefani Vincenzo’s Contribution to Italian Art Heritage." This initiative is dedicated to exploring the profound impact of Vincenzo De Stefani on Italian art, with a particular focus on his works in Verona, including "Venezia Incipriata, Veduta di Città" and "Vespro, Scena di Vita Quotidiana." 
+Our objectives include developing SPARQL queries and evaluating various Large Language Models (LLMs) to enrich our research capabilities. By expanding the ArCo knowledge graph with new data connections, we aim to create a more detailed and insightful representation of De Stefani’s influence on the Italian art scene. 
+We invite you to delve into this exploration with us and discover the legacy of De Stefani’s artistic contributions. 
+Explore with us!</p>
+    </main>
+</body>
+</html>

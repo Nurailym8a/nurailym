@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 3 - Vespro, Scena di Vita Quotidiana</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #5d4037;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+header nav ul li a.active {
+    background-color: #7b5e57;
+}
+
+header nav ul li a:hover {
+    background-color: #8d6e63;
+}
+
+main {
+    width: 85%;
+    margin: 20px auto;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #5d4037;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.query-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.query-box .query {
+    width: 65%;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.query-box .query pre {
+    font-family: Consolas, Monaco, 'Courier New', Courier, monospace;
+}
+
+.query-box .query-info {
+    width: 30%;
+    padding-left: 20px;
+    font-size: 1.1em;
+}
+
+.query-info a {
+    color: #5d4037;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.query-info a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .query-box {
+        flex-direction: column;
+    }
+
+    .query-box .query, 
+    .query-box .query-info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+#vision {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#vision img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+#vision .content {
+    max-width: 600px;
+}
+
+#vision .content h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+#vision .content p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+
+.table-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 15px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f0f0f0;
+    width: 30%;
+    color: #5A5A5A;
+}
+
+td {
+    background-color: #fafafa;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+td ul li {
+    margin-bottom: 10px;
+}
+
+.table-container {
+    transition: all 0.3s ease;
+}
+
+.table-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+
+.content-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.content-container {
+    transition: all 0.3s ease;
+}
+
+.content-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Step_1.html">Step 1</a></li>
+                <li><a href="Step_2.html">Step 2</a></li>
+                <li><a href="Step_3.html">Step 3</a></li>
+                <li><a href="Report.html">Report</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Vespro, Scena di Vita Quotidiana</h1>
+        <section id="vision">
+            <img src="vespro.png" alt="vespro" />
+            
+        </section>
+
+        <div class="table-container">
+            <h1>Zero-Shot Prompting</h1>
+            <table>
+                <tr>
+                    <th>Cultural Property</th>
+                    <td>Vespro, Scena di Vita Quotidiana</td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>De Stefano Vincenzo</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>What does this cultural property represent?</td>
+                </tr>
+                <tr>
+                    <th>ChatGPT Response</th>
+                    <td>
+                        <strong>"**Vespro, Scena di Vita Quotidiana**</strong>," painted by **Vincenzo De Stefani**, represents a moment of everyday life set during twilight or evening, which is suggested by the term *vespro* (meaning evening or vespers). The painting captures the beauty of daily life, likely depicting people engaged in simple, intimate activities that highlight the artist's focus on naturalism and human emotions. De Stefani was known for his attention to light, mood, and atmosphere, which are key in this work, giving it a serene, reflective quality. The scene reflects Italian traditions, emphasizing familial or community life in a typical Italian setting, and is a testament to his ability to translate common life experiences into art that feels timeless.
+                        <br>This work also ties into De Stefani's larger contributions to Italian landscape and genre painting, showcasing his commitment to realism and emotional depth.
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mixtral Response</th>
+                    <td>
+                        <p>
+                        "Vespro, Scena di Vita Quotidiana" (Evening, Scene of Daily Life) by Vincenzo De Stefano is a cultural property that represents a slice of everyday life, likely in Italy, during the artist's time. Here's a breakdown of what it might represent:
+
+                        <br>Daily Life: The title suggests that the artwork depicts a typical evening scene. This could include people going about their daily routines, such as returning from work, preparing dinner, or relaxing.
+
+                        <br>Cultural Heritage: The artwork likely showcases the cultural heritage of the region, including architecture, traditional clothing, and local customs.
+
+                        <br>Social Interaction: It may represent the social interactions and relationships among the people in the scene, providing a glimpse into the community's dynamics.
+
+                        <br>Historical Context: The scene can offer insights into the historical context, reflecting the period's economic activities, technological advancements, and societal norms.
+
+                        <br>Artistic Style: The artwork showcases De Stefano's artistic style, which is often characterized by realism and attention to detail.
+
+                        <br>Without seeing the specific artwork, these are general themes that can be inferred from the title and the artist's typical subjects. For a more precise representation, it would be helpful to examine the artwork directly.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+
+<div class="table-container">
+            <h1>One-Shot Prompting </h1>
+            <table>
+                <tr>
+                    <th>Cultural Property</th>
+                    <td>Vespro, Scena di Vita Quotidiana </td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>De Stefano Vincenzo</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>Сan you extract cultural entities from this description? List the results.</td>
+                </tr>
+                
+                <tr>
+                    <th>ChatGPT Response</th>
+                    <td>
+                        <strong>Vespro, Scena di Vita Quotidiana</strong> – a painting by Vincenzo De Stefani
+                        <br><strong>Italian traditions</strong> – the cultural setting and themes of the artwork
+                        <br><strong>VNaturalism</strong> – the artistic style emphasized in the painting
+                        <br><strong>Twilight or Evening (Vespro)</strong> – the time of day depicted in the painting
+                        <br><strong>Familial or Community Life</strong> – the cultural and social aspect portrayed in the scene
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mixtral Response</th>
+                    <td>
+                        What could it represent:
+                        <ul>
+                            <li><strong>1. Vespro, Scena di Vita Quotidiana</strong>  (Evening, Scene of Daily Life) - The title of the artwork</li>
+                            <li><strong>2. Vincenzo De Stefano -</strong> The author or artist of the artwork.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+
+<div class="table-container">
+            <h1>Chain of Thought Prompting </h1>
+            <table>
+                <tr>
+                    <th>Cultural Property</th>
+                    <td>Vespro, Scena di Vita Quotidiana </td>
+                </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>De Stefano Vincenzo</td>
+                </tr>
+                <tr>
+                    <th>Question</th>
+                    <td>Сan you transform this description into RDF format and use Arco ontology?</td>
+                </tr>
+                
+                <tr>
+                    <th>ChatGPT Response</th>
+                    <td>
+                        <strong>Vespro, Scena di Vita Quotidiana</strong> – a painting by Vincenzo De Stefani
+                        <br><strong>Italian traditions</strong> – the cultural setting and themes of the artwork
+                        <br><strong>VNaturalism</strong> – the artistic style emphasized in the painting
+                        <br><strong>Twilight or Evening (Vespro)</strong> – the time of day depicted in the painting
+                        <br><strong>Familial or Community Life</strong> – the cultural and social aspect portrayed in the scene
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mixtral Response</th>
+                    <td>
+                        What could it represent:
+                        <ul>
+                            <li><strong>1. Vespro, Scena di Vita Quotidiana</strong>  (Evening, Scene of Daily Life) - The title of the artwork</li>
+                            <li><strong>2. Vincenzo De Stefano -</strong> The author or artist of the artwork.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+
+
+<div class="content-container">
+        <h1>Chain of Thought Prompting</h1>
+        
+        <table>
+            <tr>
+                <th>Cultural Property</th>
+                <td>Vespro, Scena di Vita Quotidiana</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>De Stefano Vincenzo</td>
+            </tr>
+            <tr>
+                <th>Question</th>
+                <td>Сan you transform this description into RDF format and use Arco ontology?</td>
+            </tr>
+        </table>
+        
+        <h2>Chat GPT</h2>
+        <pre>
+@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+
+# Cultural Property: Vespro, Scena di Vita Quotidiana
+&lt;https://example.org/culturalProperty/vespro-scena-di-vita-quotidiana&gt; a arco:CulturalProperty ;
+    rdfs:label "Vespro, Scena di Vita Quotidiana" ;
+    dcterms:creator &lt;https://example.org/person/vincenzo-de-stefani&gt; ;
+    arco:represents &lt;https://example.org/concept/everyday-life&gt; ;
+    arco:hasTimePeriod &lt;https://example.org/timePeriod/twilight&gt; ;
+    arco:isAssociatedWith &lt;https://example.org/concept/italian-traditions&gt; ;
+    dcterms:description "The painting captures everyday life during twilight, focusing on naturalism and Italian familial traditions." .
+
+# Author: Vincenzo De Stefani
+&lt;https://example.org/person/vincenzo-de-stefani&gt; a foaf:Person ;
+    foaf:name "Vincenzo De Stefani" ;
+    foaf:made &lt;https://example.org/culturalProperty/vespro-scena-di-vita-quotidiana&gt; ;
+    dcterms:description "An Italian artist known for his focus on light, mood, and the representation of everyday life." .
+
+# Time Period: Twilight
+&lt;https://example.org/timePeriod/twilight&gt; a arco:TimePeriod ;
+    rdfs:label "Twilight" .
+
+# Concept: Everyday Life
+&lt;https://example.org/concept/everyday-life&gt; a arco:Concept ;
+    rdfs:label "Everyday Life" .
+
+# Concept: Italian Traditions
+&lt;https://example.org/concept/italian-traditions&gt; a arco:Concept ;
+    rdfs:label "Italian Traditions" .
+        </pre>
+        
+        <h2>Mixtral</h2>
+        <pre>
+@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+# Cultural Property
+&lt;http://example.org/cultural-property/vespro-scena-di-vita-quotidiana&gt; a arco:CulturalProperty ;
+    rdfs:label "Vespro, Scena di Vita Quotidiana"@it ;
+    arco:hasTitle "Vespro, Scena di Vita Quotidiana"@it ;
+    arco:hasCreator &lt;http://example.org/person/vincenzo-de-stefano&gt; ;
+    arco:hasType arco:Painting .
+
+# Author
+&lt;http://example.org/person/vincenzo-de-stefano&gt; a arco:Person ;
+    rdfs:label "Vincenzo De Stefano"@it ;
+    arco:hasName "Vincenzo De Stefano"@it .
+        </pre>
+    </div>
+
+
+
+
+
+<div class="content-container">
+        <h1>Enriching ARCO Ontology by Creating New Triplets</h1>
+        
+        <p><strong>Questions:</strong> Are there subjects in the ArCo ontology that can be connected to the architectural features depicted in "Vespro, Scena di Vita Quotidiana"?</p>
+        
+        <h2>SPARQL Query</h2>
+        <pre>
+PREFIX a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?sub ?slabel
+WHERE
+{ 
+    ?cp a-cd:hasSubject ?sub .
+    ?sub a a-cd:Subject ;
+         rdfs:label ?slabel .
+    FILTER(CONTAINS(LCASE(?slabel), "vespro") || CONTAINS(LCASE(?slabel), "scena di vita quotidiana"))
+}
+        </pre>
+        
+        <p>The purpose of this SPARQL query is to identify subjects within the ArCo ontology that are related to or can be connected with the architectural features depicted in the painting "Vespro, Scena di Vita Quotidiana" by Vincenzo De Stefani. This helps in exploring and linking relevant subjects from the ArCo dataset that might be relevant to the painting's context.</p>
+        
+        <h2>New Triplets</h2>
+        <pre>
+https://w3id.org/arco/resource/HistoricOrArtisticProperty/0500717070 a-cd:hasSubject https://w3id.org/arco/resource/Subject/12fb2e05c5f80e701d7d82602197e0c3
+        </pre>
+    </div>
+
+
+    </main>
+</body>
+</html>
